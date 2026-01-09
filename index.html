@@ -166,6 +166,49 @@
             margin-top: 4px;
         }
 
+        /* Tab Navigation */
+        .month-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 14px 32px;
+            background: var(--white);
+            border: 2px solid var(--grey-200);
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--grey-500);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .tab-button:hover {
+            border-color: var(--warning-green);
+            color: var(--dark-blue);
+            transform: translateY(-2px);
+        }
+
+        .tab-button.active {
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--warning-green-dark) 100%);
+            border-color: var(--warning-green);
+            color: var(--white);
+            box-shadow: 0 8px 24px rgba(169, 207, 115, 0.3);
+        }
+
+        .month-content {
+            display: none;
+        }
+
+        .month-content.active {
+            display: block;
+        }
+
         /* Timeline Section */
         .timeline-section {
             padding: 80px 20px;
@@ -640,480 +683,503 @@
                 <p>October 2024 – December 2024</p>
             </div>
 
-            <div class="timeline">
+            <!-- Month Tabs -->
+            <div class="month-tabs">
+                <button class="tab-button active" onclick="switchTab('october')">October</button>
+                <button class="tab-button" onclick="switchTab('november')">November</button>
+                <button class="tab-button" onclick="switchTab('december')">December</button>
+            </div>
 
-                <!-- OCTOBER -->
-                <div class="month-header">
-                    <span class="month-badge">October</span>
-                    <span class="month-subtitle">Foundation</span>
-                </div>
+            <!-- October Content -->
+            <div id="october-content" class="month-content active">
+                <div class="timeline">
 
-                <div class="timeline-group" style="animation-delay: 0.1s;">
-                    <div class="group-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--teal-blue);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                        </svg>
-                        Mid–Late October
+                    <!-- OCTOBER -->
+                    <div class="month-header">
+                        <span class="month-badge">October</span>
+                        <span class="month-subtitle">Foundation</span>
                     </div>
-                    <ul class="group-list">
-                        <li>UK & US market research and competitor analysis</li>
-                        <li>Defined main ICP / angles</li>
-                        <li>Mapped lead funnel flow (homepage → VSL/webinar → call)</li>
-                        <li>Drafted email sequence structure and webinar/podcast concept</li>
-                    </ul>
-                </div>
 
-                <a href="https://innoscripta-us.framer.website/" target="_blank" class="timeline-item timeline-card"
-                    style="animation-delay: 0.2s;">
-                    <span class="card-date">October</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                        US Homepage (First Version)
-                    </h3>
-                    <p class="card-description">Initial US-focused landing page with campaign structure and sales flow.
-                    </p>
-                    <span class="card-link-indicator">
-                        View Live Site
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- NOVEMBER -->
-                <div class="month-header">
-                    <span class="month-badge">November</span>
-                    <span class="month-subtitle">Structure & Messaging</span>
-                </div>
-
-                <div class="timeline-group" style="animation-delay: 0.3s;">
-                    <div class="group-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--teal-blue);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                        </svg>
-                        Early–Mid November
+                    <div class="timeline-group" style="animation-delay: 0.1s;">
+                        <div class="group-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--teal-blue);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                            </svg>
+                            Mid–Late October
+                        </div>
+                        <ul class="group-list">
+                            <li>UK & US market research and competitor analysis</li>
+                            <li>Defined main ICP / angles</li>
+                            <li>Mapped lead funnel flow (homepage → VSL/webinar → call)</li>
+                            <li>Drafted email sequence structure and webinar/podcast concept</li>
+                        </ul>
                     </div>
-                    <ul class="group-list">
-                        <li>Adapted UK VSL → US VSL (figures, incentives, compliance)</li>
-                        <li>Refined US sales landing page around the VSL</li>
-                        <li>Iterated US homepage to be closer to German layout</li>
-                    </ul>
-                </div>
 
-                <div class="timeline-group" style="animation-delay: 0.4s;">
-                    <div class="group-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--teal-blue);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                        </svg>
-                        Late November
+                    <a href="https://innoscripta-us.framer.website/" target="_blank" class="timeline-item timeline-card"
+                        style="animation-delay: 0.2s;">
+                        <span class="card-date">October</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                            US Homepage (First Version)
+                        </h3>
+                        <p class="card-description">Initial US-focused landing page with campaign structure and sales
+                            flow.
+                        </p>
+                        <span class="card-link-indicator">
+                            View Live Site
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- November Content -->
+            <div id="november-content" class="month-content">
+                <div class="timeline">
+                    <!-- NOVEMBER -->
+                    <div class="month-header">
+                        <span class="month-badge">November</span>
+                        <span class="month-subtitle">Structure & Messaging</span>
                     </div>
-                    <ul class="group-list">
-                        <li>Integrated product demo USP (system form vs Excel) into copy</li>
-                        <li>Planned LinkedIn & Meta campaign structure (cold + retargeting)</li>
-                        <li>Defined tracking + Hyros events and dev dependencies</li>
-                    </ul>
-                </div>
 
-                <!-- DECEMBER -->
-                <div class="month-header">
-                    <span class="month-badge">December</span>
-                    <span class="month-subtitle">Assets & Production</span>
-                </div>
-
-                <!-- Week 1 -->
-                <a href="https://docs.google.com/document/d/1Rq48NlLPFBmar0Ef22j9aO8r_vqlk5RrGmoeH6Y-sKw/edit?tab=t.wr8t4555y9qr"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.5s;">
-                    <span class="card-date">Week 1 (Dec 1-7)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        VSL Script 1
-                    </h3>
-                    <p class="card-description">Finalised US homepage with Buket (design + brand) and tightened campaign
-                        landing page copy.</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://innoscripta-us.framer.website/landing-page" target="_blank"
-                    class="timeline-item timeline-card" style="animation-delay: 0.55s;">
-                    <span class="card-date">Week 1 (Dec 1-7)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                        </svg>
-                        US Campaign Landing Page
-                    </h3>
-                    <p class="card-description">Finalised US sales landing page with refined copy and design</p>
-                    <span class="card-link-indicator">
-                        View Live Page
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Week 2 -->
-                <a href="https://docs.google.com/document/d/1kATzNl0Jx7JAUxrpDrpQS03SxH5WOurq46JESQb7mjs/edit?tab=t.0"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.6s;">
-                    <span class="card-date">Week 2 (Dec 8-12)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        Creative Brief for Creator
-                    </h3>
-                    <p class="card-description">Detailed brief for content creators with brand guidelines and messaging
-                        framework.</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://docs.google.com/document/d/1GaVU4NwMq8Ma4Upub7LtrhZ__1jgOusXMyWX3Vc5FUA/edit?usp=sharing"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.7s;">
-                    <span class="card-date">Week 2 (Dec 8-12)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        Creative Brief for Videographer
-                    </h3>
-                    <p class="card-description">Production guidelines for VSL and video content shooting.</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Week 3: Lead Magnets -->
-                <a href="https://shadowed-tortellini-d0d.notion.site/IRS-Ready-in-2-Hours-The-Secret-Way-to-R-D-Tax-Credit-Documentation-2e3851b9418f80e690fac90d85945602"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.1s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                        Lead Magnet 1: IRS-Ready in 2 Hours
-                    </h3>
-                    <p class="card-description">The Secret Way to R&D Tax Credit Documentation</p>
-                    <span class="card-link-indicator">
-                        View Lead Magnet
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://shadowed-tortellini-d0d.notion.site/The-IRS-Section-41-Cheat-Sheet-Your-Accountant-Won-t-Tell-You-About-2e3851b9418f8015b4e1cbd38363847c"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.2s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Lead Magnet 2: IRS Section 41 Cheat Sheet
-                    </h3>
-                    <p class="card-description">Your Accountant Won't Tell You About</p>
-                    <span class="card-link-indicator">
-                        View Lead Magnet
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://shadowed-tortellini-d0d.notion.site/THE-2026-CFO-S-GUIDE-TO-AUDIT-PROOF-R-D-TAX-CREDITS-2e3851b9418f80268d20d548bae0cb70"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.3s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        Lead Magnet 3: CFO's Guide to Audit-Proof Credits
-                    </h3>
-                    <p class="card-description">The 2026 CFO's comprehensive guide</p>
-                    <span class="card-link-indicator">
-                        View Lead Magnet
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://shadowed-tortellini-d0d.notion.site/The-10-Documents-R-D-CREDIT-EVIDENCE-CHECKLIST-2e3851b9418f8099b693d0fde274ff60"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.4s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-                        </svg>
-                        Lead Magnet 4: R&D Credit Evidence Checklist
-                    </h3>
-                    <p class="card-description">10 Documents you need to capture</p>
-                    <span class="card-link-indicator">
-                        View Lead Magnet
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="Calculator Landing Page.html" target="_blank" class="timeline-item timeline-card"
-                    style="animation-delay: 0.45s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                        Lead Magnet 5: R&D Tax Credit Calculator
-                    </h3>
-                    <p class="card-description">Interactive calculator to estimate Section 41 credits</p>
-                    <span class="card-link-indicator">
-                        Try Calculator
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Video Ad Scripts -->
-                <a href="https://docs.google.com/document/d/1eJyjOOV5uGh4ElDx-7SibFXJGkWqE2hzb3209VXLNFI/edit?tab=t.0"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.5s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
-                        </svg>
-                        Video Ad Scripts
-                    </h3>
-                    <p class="card-description">Cold audience video advertisement scripts</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://docs.google.com/document/d/1MzEdqP-tTudDx62M4o7CQFHj-4S3v6s-NxuHbzKFDGA/edit?tab=t.0"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.6s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                        15 Retargeting Video Scripts
-                    </h3>
-                    <p class="card-description">Retargeting campaign video scripts for warm audiences</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://www.figma.com/proto/omMnWrrAfuWTYrLxc5b2cu/Landing?node-id=48-144&t=K71F4RLH2PHSzp9W-1&scaling=contain&content-scaling=responsive"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.7s;">
-                    <span class="card-date">Week 3 (Dec 15-19)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        Static Ads (Figma)
-                    </h3>
-                    <p class="card-description">Visual static advertisement designs for campaigns</p>
-                    <span class="card-link-indicator">
-                        View Prototype
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Podcasts & Webinars -->
-                <a href="https://docs.google.com/document/d/1dRQIOEgp7c7m9zUWtEdmxf1R1K2q7Z6Z/edit" target="_blank"
-                    class="timeline-item timeline-card" style="animation-delay: 0.1s;">
-                    <span class="card-date">Week 3-4</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                        </svg>
-                        Podcast Script 1
-                    </h3>
-                    <p class="card-description">First podcast episode script for thought leadership</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://docs.google.com/document/d/1CsJfkHNs-tCr3H4-RqFVNYpmK9T2L360/edit" target="_blank"
-                    class="timeline-item timeline-card" style="animation-delay: 0.2s;">
-                    <span class="card-date">Week 3-4</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                        </svg>
-                        Podcast Script 2
-                    </h3>
-                    <p class="card-description">Second podcast episode script</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://docs.google.com/document/d/1P752MJujIvudkVksE_iFaSBrb2JIE8Ty/edit" target="_blank"
-                    class="timeline-item timeline-card" style="animation-delay: 0.3s;">
-                    <span class="card-date">Week 3-4</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        Webinar Script 1
-                    </h3>
-                    <p class="card-description">Live webinar presentation script</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <a href="https://docs.google.com/document/d/1u1Sag7CVUGIBG6aKdRpZbDBRHQO-anND/edit" target="_blank"
-                    class="timeline-item timeline-card" style="animation-delay: 0.4s;">
-                    <span class="card-date">Week 3-4</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                        Webinar Script 2
-                    </h3>
-                    <p class="card-description">Second webinar presentation script</p>
-                    <span class="card-link-indicator">
-                        View Document
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Email Funnel -->
-                <a href="https://shadowed-tortellini-d0d.notion.site/Innoscripta-Email-Funnel-Touchpoints-US-Market-2e3851b9418f8082a770fd1722fb8d30?pvs=73"
-                    target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.5s;">
-                    <span class="card-date">Week 4 (Dec 22+)</span>
-                    <h3 class="card-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                        Email Funnel Touchpoints
-                    </h3>
-                    <p class="card-description">Complete email sequence and funnel structure for US Market</p>
-                    <span class="card-link-indicator">
-                        View Funnel
-                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                        </svg>
-                    </span>
-                </a>
-
-                <!-- Final Week -->
-                <div class="timeline-group" style="animation-delay: 0.6s;">
-                    <div class="group-title">
-                        <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                            style="color: var(--warning-green);">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        End of December
+                    <div class="timeline-group" style="animation-delay: 0.3s;">
+                        <div class="group-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--teal-blue);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                            </svg>
+                            Early–Mid November
+                        </div>
+                        <ul class="group-list">
+                            <li>Adapted UK VSL → US VSL (figures, incentives, compliance)</li>
+                            <li>Refined US sales landing page around the VSL</li>
+                            <li>Iterated US homepage to be closer to German layout</li>
+                        </ul>
                     </div>
-                    <ul class="group-list">
-                        <li>Coordinated and shot the VSL with Max + videographer (~Dec 22)</li>
-                        <li>First VSL edit (executive cut)</li>
-                        <li>Finalised static ads</li>
-                        <li>Planned US testimonial videos / FAQ & objection videos</li>
-                    </ul>
-                </div>
 
+                    <div class="timeline-group" style="animation-delay: 0.4s;">
+                        <div class="group-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--teal-blue);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                            Late November
+                        </div>
+                        <ul class="group-list">
+                            <li>Integrated product demo USP (system form vs Excel) into copy</li>
+                            <li>Planned LinkedIn & Meta campaign structure (cold + retargeting)</li>
+                            <li>Defined tracking + Hyros events and dev dependencies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- December Content -->
+            <div id="december-content" class="month-content">
+                <div class="timeline">
+                    <!-- DECEMBER -->
+                    <div class="month-header">
+                        <span class="month-badge">December</span>
+                        <span class="month-subtitle">Assets & Production</span>
+                    </div>
+
+                    <!-- Week 1 -->
+                    <a href="https://docs.google.com/document/d/1Rq48NlLPFBmar0Ef22j9aO8r_vqlk5RrGmoeH6Y-sKw/edit?tab=t.wr8t4555y9qr"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.5s;">
+                        <span class="card-date">Week 1 (Dec 1-7)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            VSL Script 1
+                        </h3>
+                        <p class="card-description">Finalised US homepage with Buket (design + brand) and tightened
+                            campaign
+                            landing page copy.</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://innoscripta-us.framer.website/landing-page" target="_blank"
+                        class="timeline-item timeline-card" style="animation-delay: 0.55s;">
+                        <span class="card-date">Week 1 (Dec 1-7)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                            </svg>
+                            US Campaign Landing Page
+                        </h3>
+                        <p class="card-description">Finalised US sales landing page with refined copy and design</p>
+                        <span class="card-link-indicator">
+                            View Live Page
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Week 2 -->
+                    <a href="https://docs.google.com/document/d/1kATzNl0Jx7JAUxrpDrpQS03SxH5WOurq46JESQb7mjs/edit?tab=t.0"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.6s;">
+                        <span class="card-date">Week 2 (Dec 8-12)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                            </svg>
+                            Creative Brief for Creator
+                        </h3>
+                        <p class="card-description">Detailed brief for content creators with brand guidelines and
+                            messaging
+                            framework.</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1GaVU4NwMq8Ma4Upub7LtrhZ__1jgOusXMyWX3Vc5FUA/edit?usp=sharing"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.7s;">
+                        <span class="card-date">Week 2 (Dec 8-12)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            Creative Brief for Videographer
+                        </h3>
+                        <p class="card-description">Production guidelines for VSL and video content shooting.</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Week 3: Lead Magnets -->
+                    <a href="https://shadowed-tortellini-d0d.notion.site/IRS-Ready-in-2-Hours-The-Secret-Way-to-R-D-Tax-Credit-Documentation-2e3851b9418f80e690fac90d85945602"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.1s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            Lead Magnet 1: IRS-Ready in 2 Hours
+                        </h3>
+                        <p class="card-description">The Secret Way to R&D Tax Credit Documentation</p>
+                        <span class="card-link-indicator">
+                            View Lead Magnet
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://shadowed-tortellini-d0d.notion.site/The-IRS-Section-41-Cheat-Sheet-Your-Accountant-Won-t-Tell-You-About-2e3851b9418f8015b4e1cbd38363847c"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.2s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Lead Magnet 2: IRS Section 41 Cheat Sheet
+                        </h3>
+                        <p class="card-description">Your Accountant Won't Tell You About</p>
+                        <span class="card-link-indicator">
+                            View Lead Magnet
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://shadowed-tortellini-d0d.notion.site/THE-2026-CFO-S-GUIDE-TO-AUDIT-PROOF-R-D-TAX-CREDITS-2e3851b9418f80268d20d548bae0cb70"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.3s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Lead Magnet 3: CFO's Guide to Audit-Proof Credits
+                        </h3>
+                        <p class="card-description">The 2026 CFO's comprehensive guide</p>
+                        <span class="card-link-indicator">
+                            View Lead Magnet
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://shadowed-tortellini-d0d.notion.site/The-10-Documents-R-D-CREDIT-EVIDENCE-CHECKLIST-2e3851b9418f8099b693d0fde274ff60"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.4s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                            </svg>
+                            Lead Magnet 4: R&D Credit Evidence Checklist
+                        </h3>
+                        <p class="card-description">10 Documents you need to capture</p>
+                        <span class="card-link-indicator">
+                            View Lead Magnet
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="Calculator Landing Page.html" target="_blank" class="timeline-item timeline-card"
+                        style="animation-delay: 0.45s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                            </svg>
+                            Lead Magnet 5: R&D Tax Credit Calculator
+                        </h3>
+                        <p class="card-description">Interactive calculator to estimate Section 41 credits</p>
+                        <span class="card-link-indicator">
+                            Try Calculator
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Video Ad Scripts -->
+                    <a href="https://docs.google.com/document/d/1eJyjOOV5uGh4ElDx-7SibFXJGkWqE2hzb3209VXLNFI/edit?tab=t.0"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.5s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 4v16M17 4v16M3 8h4m10 0h4M3 12h18M3 16h4m10 0h4M4 20h16a1 1 0 001-1V5a1 1 0 00-1-1H4a1 1 0 00-1 1v14a1 1 0 001 1z" />
+                            </svg>
+                            Video Ad Scripts
+                        </h3>
+                        <p class="card-description">Cold audience video advertisement scripts</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1MzEdqP-tTudDx62M4o7CQFHj-4S3v6s-NxuHbzKFDGA/edit?tab=t.0"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.6s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            15 Retargeting Video Scripts
+                        </h3>
+                        <p class="card-description">Retargeting campaign video scripts for warm audiences</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://www.figma.com/proto/omMnWrrAfuWTYrLxc5b2cu/Landing?node-id=48-144&t=K71F4RLH2PHSzp9W-1&scaling=contain&content-scaling=responsive"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.7s;">
+                        <span class="card-date">Week 3 (Dec 15-19)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                            Static Ads (Figma)
+                        </h3>
+                        <p class="card-description">Visual static advertisement designs for campaigns</p>
+                        <span class="card-link-indicator">
+                            View Prototype
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Podcasts & Webinars -->
+                    <a href="https://docs.google.com/document/d/1dRQIOEgp7c7m9zUWtEdmxf1R1K2q7Z6Z/edit" target="_blank"
+                        class="timeline-item timeline-card" style="animation-delay: 0.1s;">
+                        <span class="card-date">Week 3-4</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                            Podcast Script 1
+                        </h3>
+                        <p class="card-description">First podcast episode script for thought leadership</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1CsJfkHNs-tCr3H4-RqFVNYpmK9T2L360/edit" target="_blank"
+                        class="timeline-item timeline-card" style="animation-delay: 0.2s;">
+                        <span class="card-date">Week 3-4</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                            </svg>
+                            Podcast Script 2
+                        </h3>
+                        <p class="card-description">Second podcast episode script</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1P752MJujIvudkVksE_iFaSBrb2JIE8Ty/edit" target="_blank"
+                        class="timeline-item timeline-card" style="animation-delay: 0.3s;">
+                        <span class="card-date">Week 3-4</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            Webinar Script 1
+                        </h3>
+                        <p class="card-description">Live webinar presentation script</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <a href="https://docs.google.com/document/d/1u1Sag7CVUGIBG6aKdRpZbDBRHQO-anND/edit" target="_blank"
+                        class="timeline-item timeline-card" style="animation-delay: 0.4s;">
+                        <span class="card-date">Week 3-4</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                            </svg>
+                            Webinar Script 2
+                        </h3>
+                        <p class="card-description">Second webinar presentation script</p>
+                        <span class="card-link-indicator">
+                            View Document
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Email Funnel -->
+                    <a href="https://shadowed-tortellini-d0d.notion.site/Innoscripta-Email-Funnel-Touchpoints-US-Market-2e3851b9418f8082a770fd1722fb8d30?pvs=73"
+                        target="_blank" class="timeline-item timeline-card" style="animation-delay: 0.5s;">
+                        <span class="card-date">Week 4 (Dec 22+)</span>
+                        <h3 class="card-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            Email Funnel Touchpoints
+                        </h3>
+                        <p class="card-description">Complete email sequence and funnel structure for US Market</p>
+                        <span class="card-link-indicator">
+                            View Funnel
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </span>
+                    </a>
+
+                    <!-- Final Week -->
+                    <div class="timeline-group" style="animation-delay: 0.6s;">
+                        <div class="group-title">
+                            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                style="color: var(--warning-green);">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            End of December
+                        </div>
+                        <ul class="group-list">
+                            <li>Coordinated and shot the VSL with Max + videographer (~Dec 22)</li>
+                            <li>First VSL edit (executive cut)</li>
+                            <li>Finalised static ads</li>
+                            <li>Planned US testimonial videos / FAQ & objection videos</li>
+                        </ul>
+                    </div>
+
+                </div>
             </div>
         </div>
     </section>
@@ -1132,6 +1198,27 @@
             <p>Audit-ready R&D documentation — every day of the year.</p>
         </div>
     </footer>
+
+    <script>
+        function switchTab(month) {
+            // Hide all month contents
+            const contents = document.querySelectorAll('.month-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected month content
+            document.getElementById(month + '-content').classList.add('active');
+
+            // Activate clicked button
+            event.target.classList.add('active');
+
+            // Scroll to top of timeline section smoothly
+            document.querySelector('.timeline-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
 </body>
 
 </html>
