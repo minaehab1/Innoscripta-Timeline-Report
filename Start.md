@@ -132,3 +132,4 @@ End of December
 First VSL edit (executive cut)
 Finalised static ads
 Planned US testimonial videos / FAQ & objection videos
+
