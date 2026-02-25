@@ -1131,8 +1131,16 @@
                     <span class="ad-verdict" style="background: var(--grey-200); color: var(--grey-500);">Average</span>
                     <h4>Reddit-Style Video</h4>
                     <div class="ad-image-container">
-                        <video src="Images/Reddit-Style Video.mp4" class="ad-image" controls muted loop
-                            playsinline></video>
+                        <script src="https://fast.wistia.com/player.js" async></script>
+                        <script src="https://fast.wistia.com/embed/5qz120jl8b.js" async type="module"></script>
+                        <style>
+                            wistia-player[media-id='5qz120jl8b']:not(:defined) {
+                                background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/5qz120jl8b/swatch');
+                                display: block;
+                                filter: blur(5px);
+                                padding-top: 177.78%;
+                            }
+                        </style> <wistia-player media-id="5qz120jl8b" aspect="0.5625"></wistia-player>
                     </div>
                     <div class="ad-metrics">
                         <div class="ad-metric">
