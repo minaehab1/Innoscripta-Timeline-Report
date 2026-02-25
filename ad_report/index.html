@@ -1,0 +1,1428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Performance Report | Innoscripta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue-dark: #0A607E;
+            --primary-blue-light: #2B8AAF;
+            --teal-blue: #2186AB;
+            --warning-green: #A9CF73;
+            --warning-green-dark: #8AB860;
+            --dark-blue: #1A3A5C;
+            --primary-bg: #0D4A63;
+            --white: #FFFFFF;
+            --grey-100: #F5F7FA;
+            --grey-200: #E8ECF1;
+            --grey-500: #9CA3AF;
+            --red: #E74C3C;
+            --red-light: #FEE2E2;
+            --green-light: #F0FFF4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-blue);
+            background: linear-gradient(135deg, var(--grey-100) 0%, var(--white) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══════════════════════════════════════════ HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(10, 96, 126, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .header-badge {
+            background: rgba(169, 207, 115, 0.2);
+            border: 1px solid var(--warning-green);
+            color: var(--warning-green);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════ HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 50%, var(--teal-blue) 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(169, 207, 115, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .hero h1 .highlight {
+            color: var(--warning-green);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 28px 36px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            min-width: 180px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-4px);
+            border-color: var(--warning-green);
+        }
+
+        .stat-number {
+            font-size: 44px;
+            font-weight: 900;
+            display: block;
+            color: var(--warning-green);
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.7;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .stat-sub {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-top: 4px;
+        }
+
+        /* ═══════════════════════════════════════════ SECTIONS */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--teal-blue) 100%);
+            color: var(--white);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark-blue);
+        }
+
+        .section-header h2 .highlight {
+            color: var(--primary-blue-dark);
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--grey-500);
+            margin-top: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ═══════════════════════════════════════════ KPI CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(10, 96, 126, 0.15);
+            border-color: var(--warning-green);
+        }
+
+        .kpi-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--grey-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-value {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 8px 0 4px;
+            letter-spacing: -2px;
+        }
+
+        .kpi-value.blue {
+            color: var(--primary-blue-dark);
+        }
+
+        .kpi-value.teal {
+            color: var(--teal-blue);
+        }
+
+        .kpi-value.green {
+            color: var(--warning-green-dark);
+        }
+
+        .kpi-sub {
+            font-size: 14px;
+            color: var(--grey-500);
+        }
+
+        .kpi-divider {
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--warning-green), var(--teal-blue));
+            border-radius: 2px;
+            margin: 12px 0;
+        }
+
+        /* ═══════════════════════════════════════════ CAMPAIGN TABLE */
+        .table-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            margin-bottom: 32px;
+        }
+
+        .table-card-header {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            padding: 20px 28px;
+            color: var(--white);
+        }
+
+        .table-card-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .table-card-header p {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background: var(--grey-100);
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--grey-500);
+            text-align: left;
+            border-bottom: 2px solid var(--grey-200);
+        }
+
+        table th:not(:first-child) {
+            text-align: center;
+        }
+
+        table td {
+            padding: 16px 20px;
+            font-size: 15px;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        table td:not(:first-child) {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr.total-row {
+            background: var(--grey-100);
+        }
+
+        table tr.total-row td {
+            font-weight: 800;
+            color: var(--dark-blue);
+        }
+
+        /* ═══════════════════════════════════════════ AD CREATIVE CARDS (GRID) */
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        @media (min-width: 1100px) {
+            .ads-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .ad-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(10, 96, 126, 0.15);
+        }
+
+        .ad-card.winner {
+            border-color: var(--warning-green);
+        }
+
+        .ad-card.winner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--warning-green), var(--teal-blue));
+        }
+
+        .ad-card.promising {
+            border-color: var(--primary-blue-light);
+        }
+
+        .ad-card.promising::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-blue-light);
+        }
+
+        .ad-card.cut {
+            border-color: var(--red);
+            opacity: 0.75;
+        }
+
+        .ad-card.cut::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--red);
+        }
+
+        .ad-verdict {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .verdict-winner {
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--warning-green-dark) 100%);
+            color: var(--white);
+        }
+
+        .verdict-promising {
+            background: rgba(43, 138, 175, 0.15);
+            color: var(--primary-blue-dark);
+        }
+
+        .verdict-cut {
+            background: var(--red-light);
+            color: var(--red);
+        }
+
+        .ad-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .ad-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .ad-metric {
+            background: var(--grey-100);
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .ad-metric-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--grey-500);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .ad-metric-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin-top: 2px;
+        }
+
+        .ad-metric-value.green {
+            color: var(--warning-green-dark);
+        }
+
+        .ad-metric-value.red {
+            color: var(--red);
+        }
+
+        /* ═══════════════════════════════════════════ FUNNEL */
+        .funnel-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .funnel-bar-container {
+            flex: 1;
+        }
+
+        .funnel-bar-bg {
+            background: var(--grey-200);
+            border-radius: 12px;
+            height: 64px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .funnel-bar {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            min-width: 80px;
+            transition: width 1s ease;
+        }
+
+        .funnel-bar-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .funnel-bar-text .count {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .funnel-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            margin-left: 140px;
+        }
+
+        .funnel-drop {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            border-radius: 50px;
+            padding: 4px 16px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--grey-500);
+        }
+
+        .funnel-drop.alert {
+            border-color: var(--red);
+            color: var(--red);
+            background: var(--red-light);
+        }
+
+        .funnel-drop svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .funnel-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue-dark), var(--teal-blue));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════════ INSIGHT CALLOUT */
+        .insight-callout {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            border-radius: 16px;
+            padding: 32px 36px;
+            color: var(--white);
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insight-callout::before {
+            content: '⚠️';
+            font-size: 48px;
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            opacity: 0.15;
+        }
+
+        .insight-callout h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--warning-green);
+        }
+
+        .insight-callout p {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* ═══════════════════════════════════════════ RECOMMENDATIONS */
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        @media (min-width: 1100px) {
+            .rec-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .rec-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 20px;
+        }
+
+        .rec-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(10, 96, 126, 0.15);
+            border-color: var(--warning-green);
+        }
+
+        .rec-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--teal-blue) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .rec-content h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .rec-content p {
+            font-size: 14px;
+            color: #4B5563;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════ BOTTOM LINE */
+        .bottom-line {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 50%, var(--teal-blue) 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bottom-line::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(169, 207, 115, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .bottom-line h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bottom-line p {
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 720px;
+            margin: 0 auto 16px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .bottom-line .uplift {
+            display: inline-block;
+            margin-top: 24px;
+            background: rgba(169, 207, 115, 0.2);
+            border: 1px solid var(--warning-green);
+            color: var(--warning-green);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════ FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        footer p {
+            opacity: 0.5;
+            font-size: 13px;
+        }
+
+        /* ═══════════════════════════════════════════ ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* ═══════════════════════════════════════════ RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-stats {
+                gap: 16px;
+            }
+
+            .stat {
+                padding: 20px 24px;
+                min-width: 140px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-value {
+                font-size: 36px;
+            }
+
+            .ads-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .funnel-connector {
+                margin-left: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="36" height="42" viewBox="0 0 28 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M20.44 33.29C16.01 30.72 10.98 29.15 5.61 28.71L6.50 30.72C6.62 30.97 6.85 31.17 7.13 31.21C11.64 31.83 15.93 33.39 19.66 35.65L20.61 33.89C20.72 33.68 20.64 33.42 20.44 33.30Z"
+                            fill="url(#grad1)" />
+                        <path
+                            d="M3.51 24.72L5.50 28.68L7.05 28.82C7.38 28.85 7.78 28.88 8.24 28.90C8.96 28.95 9.69 28.98 10.42 28.98C14.16 28.98 17.82 28.29 21.15 27.08C21.34 27.01 21.49 26.86 21.59 26.68L24.39 21.07C25.16 19.54 25.74 17.92 26.09 16.24C26.23 15.58 26.32 14.93 26.32 14.40C26.32 5.67 16.92 -1.05 7.85 4.35C6.42 5.19 5.29 6.45 4.37 7.81C1.81 11.60 1.94 16.23 3.59 19.62L6.36 25.12C5.04 24.95 4.41 24.86 3.94 24.79C3.66 24.75 3.42 24.57 3.30 24.32L1.49 20.70C0.55 18.78 0 16.65 0 14.40C0 4.04 11.18 -3.91 21.69 2.04C23.63 3.14 25.51 4.95 26.69 7.06C29.22 11.59 29.18 16.27 27.56 20.05L24.84 25.44L23.26 28.60C23.17 28.77 23.02 28.91 22.84 28.98C19.00 30.52 14.81 31.37 10.42 31.37C9.32 31.37 8.23 31.32 7.16 31.21C6.89 31.19 6.65 31.02 6.52 30.77L3.51 24.72Z"
+                            fill="white" />
+                        <defs>
+                            <linearGradient id="grad1" x1="20.94" y1="34.93" x2="6.91" y2="29.33"
+                                gradientUnits="userSpaceOnUse">
+                                <stop stop-color="white" />
+                                <stop offset="0.99" stop-color="#0A607E" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                    <span class="logo-text">innoscripta</span>
+                </div>
+                <span class="header-badge">Ad Performance Report</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate">Facebook & Instagram <span class="highlight">Ad Results</span></h1>
+            <p class="animate delay-1">Executive summary for January 29 – February 25, 2026. Here's what our ad budget
+                delivered over the past 4 weeks targeting US decision-makers.</p>
+
+            <div class="hero-stats">
+                <div class="stat animate delay-1">
+                    <span class="stat-number">€2,690</span>
+                    <span class="stat-label">Total Spent</span>
+                    <span class="stat-sub">Over 28 days</span>
+                </div>
+                <div class="stat animate delay-2">
+                    <span class="stat-number">81</span>
+                    <span class="stat-label">Leads</span>
+                    <span class="stat-sub">People who attempted to book</span>
+                </div>
+                <div class="stat animate delay-3">
+                    <span class="stat-number">9</span>
+                    <span class="stat-label">Appointments</span>
+                    <span class="stat-sub">Meetings booked</span>
+                </div>
+                <div class="stat animate delay-4">
+                    <span class="stat-number">46K</span>
+                    <span class="stat-label">People Reached</span>
+                    <span class="stat-sub">US professionals</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ COST KPIs ═══════════════════════════ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Big Picture</span>
+                <h2>What Each Result <span class="highlight">Costs You</span></h2>
+            </div>
+
+            <div class="kpi-grid">
+                <div class="kpi-card animate">
+                    <span class="kpi-label">Cost per Lead</span>
+                    <span class="kpi-divider"></span>
+                    <div class="kpi-value blue">€33.22</div>
+                    <span class="kpi-sub">Average cost to acquire one lead</span>
+                </div>
+                <div class="kpi-card animate delay-1">
+                    <span class="kpi-label">Cost per Appointment</span>
+                    <span class="kpi-divider"></span>
+                    <div class="kpi-value teal">€299.05</div>
+                    <span class="kpi-sub">Average cost per booked meeting</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ CAMPAIGNS ═══════════════════════════ -->
+    <section class="section" style="background: var(--grey-100); padding-top: 60px; padding-bottom: 60px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">What's Working</span>
+                <h2>Campaign <span class="highlight">Performance</span></h2>
+                <p>Two campaigns ran during this period — here's what each delivered.</p>
+            </div>
+
+            <div class="table-card animate">
+                <div class="table-card-header">
+                    <h3>Campaign Comparison</h3>
+                    <p>January 29 – February 25, 2026</p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Campaign</th>
+                            <th>Spent</th>
+                            <th>Leads</th>
+                            <th>Appointments</th>
+                            <th>Cost / Appt.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>BB. Lead Campaign | US | 2026</strong></td>
+                            <td>€1,660</td>
+                            <td>43</td>
+                            <td>5</td>
+                            <td>€332.00</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Primary Lead Gen | CBO | US</strong></td>
+                            <td>€1,026</td>
+                            <td>38</td>
+                            <td>4</td>
+                            <td>€256.47</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td>Total</td>
+                            <td>€2,690</td>
+                            <td>81</td>
+                            <td>9</td>
+                            <td>€299.05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ AD CREATIVES ═══════════════════════════ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Ad Creatives</span>
+                <h2>Which Ads Are <span class="highlight">Performing</span></h2>
+                <p>We tested several messages. Here's what worked and what didn't.</p>
+            </div>
+
+            <div class="ads-grid">
+                <!-- Winner 1 -->
+                <div class="ad-card winner animate">
+                    <span class="ad-verdict verdict-winner">⭐ Winner</span>
+                    <h4>€7.6 Million in Claims</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€699</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value green">28</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value green">€24.95</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Share</span>
+                            <div class="ad-metric-value">35%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Winner 2 -->
+                <div class="ad-card winner animate delay-1">
+                    <span class="ad-verdict verdict-winner">⭐ Winner</span>
+                    <h4>Stop Leaving Money on the Table</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€638</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value green">24</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value green">€26.60</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Share</span>
+                            <div class="ad-metric-value">30%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promising 1 -->
+                <div class="ad-card promising animate delay-2">
+                    <span class="ad-verdict verdict-promising">🔍 Promising</span>
+                    <h4>Track Your R&D (Control)</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€23</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value">3</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value green">€7.63</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Status</span>
+                            <div class="ad-metric-value" style="font-size:13px;color:var(--primary-blue-light);">Needs
+                                more budget</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Average -->
+                <div class="ad-card animate delay-1">
+                    <span class="ad-verdict" style="background: var(--grey-200); color: var(--grey-500);">Average</span>
+                    <h4>Reddit-Style Video</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€313</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value">5</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value">€62.58</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Verdict</span>
+                            <div class="ad-metric-value" style="font-size:13px;">Watch closely</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promising 2 -->
+                <div class="ad-card promising animate delay-2">
+                    <span class="ad-verdict verdict-promising">🔍 Promising</span>
+                    <h4>Runway Ad (Georgia)</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€50</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value">2</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value green">€24.84</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Status</span>
+                            <div class="ad-metric-value" style="font-size:13px;color:var(--primary-blue-light);">Low
+                                spend, good signal</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cut 1 -->
+                <div class="ad-card cut animate delay-3">
+                    <span class="ad-verdict verdict-cut">✕ Cut</span>
+                    <h4>750K Claims Processed</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€210</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value red">1</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value red">€209.63</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Verdict</span>
+                            <div class="ad-metric-value red" style="font-size:13px;">Wasting budget</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cut 2 -->
+                <div class="ad-card cut animate delay-3">
+                    <span class="ad-verdict verdict-cut">✕ Cut</span>
+                    <h4>€0/Month Risk-Free</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€117</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value red">0</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value red">N/A</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Verdict</span>
+                            <div class="ad-metric-value red" style="font-size:13px;">Zero results</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cut 3 -->
+                <div class="ad-card cut animate delay-3">
+                    <span class="ad-verdict verdict-cut">✕ Cut</span>
+                    <h4>Zero Hassle</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Spent</span>
+                            <div class="ad-metric-value">€126</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Leads</span>
+                            <div class="ad-metric-value red">1</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Cost/Lead</span>
+                            <div class="ad-metric-value red">€126.04</div>
+                        </div>
+                        <div class="ad-metric">
+                            <span class="ad-metric-label">Verdict</span>
+                            <div class="ad-metric-value red" style="font-size:13px;">Wasting budget</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary callout -->
+            <div class="insight-callout" style="margin-top: 40px;">
+                <h4>Key Takeaway</h4>
+                <p>The two winning ads generated <strong>52 of your 81 leads</strong> — that's 64% of all results. Three
+                    underperforming ads have spent a combined <strong>€453 and produced only 2 leads</strong>. Turning
+                    those off and reinvesting in the winners is the single biggest improvement we can make right now.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ FUNNEL ═══════════════════════════ -->
+    <section class="section" style="background: var(--grey-100);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Funnel</span>
+                <h2>Where We're <span class="highlight">Losing People</span></h2>
+                <p>The journey from seeing your ad to booking an appointment.</p>
+            </div>
+
+            <div class="funnel-wrapper">
+                <div class="funnel-step animate">
+                    <span class="funnel-number">1</span>
+                    <div class="funnel-bar-container">
+                        <div class="funnel-bar-bg">
+                            <div class="funnel-bar"
+                                style="width: 100%; background: linear-gradient(135deg, var(--primary-bg), var(--teal-blue));">
+                                <span class="funnel-bar-text">
+                                    <span>Saw the ad</span>
+                                    <span class="count">46,027</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="funnel-connector">
+                    <span class="funnel-drop">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        93% left
+                    </span>
+                </div>
+
+                <div class="funnel-step animate delay-1">
+                    <span class="funnel-number">2</span>
+                    <div class="funnel-bar-container">
+                        <div class="funnel-bar-bg">
+                            <div class="funnel-bar"
+                                style="width: 55%; background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue-light));">
+                                <span class="funnel-bar-text">
+                                    <span>Clicked the ad</span>
+                                    <span class="count">3,219</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="funnel-connector">
+                    <span class="funnel-drop alert">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        75% left — biggest leak!
+                    </span>
+                </div>
+
+                <div class="funnel-step animate delay-2">
+                    <span class="funnel-number">3</span>
+                    <div class="funnel-bar-container">
+                        <div class="funnel-bar-bg">
+                            <div class="funnel-bar"
+                                style="width: 30%; background: linear-gradient(135deg, var(--teal-blue), var(--warning-green-dark));">
+                                <span class="funnel-bar-text">
+                                    <span>Landed on website</span>
+                                    <span class="count">790</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="funnel-connector">
+                    <span class="funnel-drop">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        90% left
+                    </span>
+                </div>
+
+                <div class="funnel-step animate delay-3">
+                    <span class="funnel-number">4</span>
+                    <div class="funnel-bar-container">
+                        <div class="funnel-bar-bg">
+                            <div class="funnel-bar"
+                                style="width: 18%; background: linear-gradient(135deg, var(--warning-green-dark), var(--warning-green));">
+                                <span class="funnel-bar-text">
+                                    <span>Attempted to book</span>
+                                    <span class="count">81</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="funnel-connector">
+                    <span class="funnel-drop">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        89% left
+                    </span>
+                </div>
+
+                <div class="funnel-step animate delay-4">
+                    <span class="funnel-number">5</span>
+                    <div class="funnel-bar-container">
+                        <div class="funnel-bar-bg">
+                            <div class="funnel-bar"
+                                style="width: 10%; background: var(--warning-green); min-width:140px;">
+                                <span class="funnel-bar-text">
+                                    <span>Booked meeting</span>
+                                    <span class="count">9</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-callout">
+                <h4>The Biggest Opportunity</h4>
+                <p>75% of people who click your ad leave before the website loads. This is unusual and suggests the
+                    landing page may be loading too slowly on mobile, or there's a disconnect between the ad's promise
+                    and what the page shows. <strong>Fixing this one issue could double or triple your leads without
+                        spending more on ads.</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ RECOMMENDATIONS ═══════════════════════════ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Next Steps</span>
+                <h2>What We <span class="highlight">Recommend</span></h2>
+            </div>
+
+            <div class="rec-grid">
+                <div class="rec-card animate">
+                    <span class="rec-number">1</span>
+                    <div class="rec-content">
+                        <h4>Double down on what works</h4>
+                        <p>Move budget from failing ads to the two winners (€7.6M Claims and Stop Leaving Money). These
+                            two ads alone could generate 20–30% more leads if given more budget.</p>
+                    </div>
+                </div>
+                <div class="rec-card animate delay-1">
+                    <span class="rec-number">2</span>
+                    <div class="rec-content">
+                        <h4>Turn off 3 underperformers</h4>
+                        <p>The "750K Claims," "€0/Month," and "Zero Hassle" ads spent a combined €453 and produced only
+                            2 leads. That money is better spent elsewhere.</p>
+                    </div>
+                </div>
+                <div class="rec-card animate delay-2">
+                    <span class="rec-number">3</span>
+                    <div class="rec-content">
+                        <h4>Test "Track R&D" with more budget</h4>
+                        <p>At €7.63 per lead, this shows 4x better efficiency than the account average. The signal is
+                            strong enough to invest more and validate at scale.</p>
+                    </div>
+                </div>
+                <div class="rec-card animate delay-3">
+                    <span class="rec-number">4</span>
+                    <div class="rec-content">
+                        <h4>Fix the website landing experience</h4>
+                        <p>3 out of 4 people who click the ad leave before the page loads. A faster, clearer landing
+                            page could potentially double or triple your leads at the same spend.</p>
+                    </div>
+                </div>
+                <div class="rec-card animate delay-4">
+                    <span class="rec-number">5</span>
+                    <div class="rec-content">
+                        <h4>Keep investing in Primary Lead Gen</h4>
+                        <p>It's only been running for 2 weeks but is already delivering leads 30% cheaper than BB. Lead
+                            Campaign. Meta's algorithm is finding the right people.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ BOTTOM LINE ═══════════════════════════ -->
+    <section class="bottom-line">
+        <div class="container">
+            <h2 class="animate">Bottom Line</h2>
+            <p class="animate delay-1">Your ads are working. You're reaching senior decision-makers in the US and
+                converting them into leads and meetings at a reasonable cost. The main opportunities are to cut waste
+                from underperforming ads, scale what's already winning, and fix the website experience to capture more
+                of the people who are already clicking.</p>
+            <p class="animate delay-2">If we fix the landing page drop-off and reallocate budget to top performers, we
+                estimate we could increase leads by:</p>
+            <div class="animate delay-3">
+                <span class="uplift">+40–60% More Leads</span>
+            </div>
+            <p class="animate delay-4" style="margin-top: 16px; opacity: 0.6; font-size: 14px;">Without increasing
+                overall ad spend</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <svg width="32" height="38" viewBox="0 0 28 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.51 24.72L5.50 28.68L7.05 28.82C7.38 28.85 7.78 28.88 8.24 28.90C8.96 28.95 9.69 28.98 10.42 28.98C14.16 28.98 17.82 28.29 21.15 27.08C21.34 27.01 21.49 26.86 21.59 26.68L24.39 21.07C25.16 19.54 25.74 17.92 26.09 16.24C26.23 15.58 26.32 14.93 26.32 14.40C26.32 5.67 16.92 -1.05 7.85 4.35C6.42 5.19 5.29 6.45 4.37 7.81C1.81 11.60 1.94 16.23 3.59 19.62L6.36 25.12C5.04 24.95 4.41 24.86 3.94 24.79C3.66 24.75 3.42 24.57 3.30 24.32L1.49 20.70C0.55 18.78 0 16.65 0 14.40C0 4.04 11.18 -3.91 21.69 2.04C23.63 3.14 25.51 4.95 26.69 7.06C29.22 11.59 29.18 16.27 27.56 20.05L24.84 25.44L23.26 28.60C23.17 28.77 23.02 28.91 22.84 28.98C19.00 30.52 14.81 31.37 10.42 31.37C9.32 31.37 8.23 31.32 7.16 31.21C6.89 31.19 6.65 31.02 6.52 30.77L3.51 24.72Z"
+                        fill="white" />
+                </svg>
+                <span>innoscripta</span>
+            </div>
+            <p>Report prepared February 25, 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
