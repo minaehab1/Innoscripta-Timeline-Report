@@ -452,6 +452,21 @@
             line-height: 1.3;
         }
 
+        .ad-image-container {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid var(--grey-200);
+            background: var(--grey-100);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .ad-metrics {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -986,6 +1001,9 @@
                 <div class="ad-card winner animate">
                     <span class="ad-verdict verdict-winner">⭐ Winner</span>
                     <h4>€7.6 Million in Claims</h4>
+                    <div class="ad-image-container">
+                        <img src="Images/$7.6 Million in Claims.jpg" alt="€7.6 Million in Claims Ad" class="ad-image">
+                    </div>
                     <div class="ad-metrics">
                         <div class="ad-metric">
                             <span class="ad-metric-label">Spent</span>
@@ -1010,6 +1028,10 @@
                 <div class="ad-card winner animate delay-1">
                     <span class="ad-verdict verdict-winner">⭐ Winner</span>
                     <h4>Stop Leaving Money on the Table</h4>
+                    <div class="ad-image-container">
+                        <img src="Images/Stop Leaving Money on the Table.png" alt="Stop Leaving Money on the Table Ad"
+                            class="ad-image">
+                    </div>
                     <div class="ad-metrics">
                         <div class="ad-metric">
                             <span class="ad-metric-label">Spent</span>
@@ -1034,6 +1056,10 @@
                 <div class="ad-card promising animate delay-2">
                     <span class="ad-verdict verdict-promising">🔍 Promising</span>
                     <h4>Track Your R&D (Control)</h4>
+                    <div class="ad-image-container">
+                        <img src="Images/Track Your R&D (Control).png" alt="Track Your R&D (Control) Ad"
+                            class="ad-image">
+                    </div>
                     <div class="ad-metrics">
                         <div class="ad-metric">
                             <span class="ad-metric-label">Spent</span>
@@ -1082,7 +1108,10 @@
                 <!-- Promising 2 -->
                 <div class="ad-card promising animate delay-2">
                     <span class="ad-verdict verdict-promising">🔍 Promising</span>
-                    <h4>Runway Ad (Georgia)</h4>
+                    <h4>Runway Ad</h4>
+                    <div class="ad-image-container">
+                        <img src="Images/Runway Ad.jpg" alt="Runway Ad" class="ad-image">
+                    </div>
                     <div class="ad-metrics">
                         <div class="ad-metric">
                             <span class="ad-metric-label">Spent</span>
