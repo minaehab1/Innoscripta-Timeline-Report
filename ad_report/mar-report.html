@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Performance Report — March 1–19 | Innoscripta</title>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue-dark: #0A607E;
+            --primary-blue-light: #2B8AAF;
+            --teal-blue: #2186AB;
+            --warning-green: #A9CF73;
+            --warning-green-dark: #8AB860;
+            --dark-blue: #1A3A5C;
+            --primary-bg: #0D4A63;
+            --white: #FFFFFF;
+            --grey-100: #F5F7FA;
+            --grey-200: #E8ECF1;
+            --grey-500: #9CA3AF;
+            --red: #E74C3C;
+            --red-light: #FEE2E2;
+            --green-light: #F0FFF4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-blue);
+            background: linear-gradient(135deg, var(--grey-100) 0%, var(--white) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ═══════════════════════════════════════════ HEADER */
+        header {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(10, 96, 126, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .header-badge {
+            background: rgba(169, 207, 115, 0.2);
+            border: 1px solid var(--warning-green);
+            color: var(--warning-green);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ═══════════════════════════════════════════ HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 50%, var(--teal-blue) 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(169, 207, 115, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        .hero h1 .highlight {
+            color: var(--warning-green);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            padding: 24px 20px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .stat:hover {
+            transform: translateY(-4px);
+            border-color: var(--warning-green);
+        }
+
+        .stat-number {
+            font-size: 44px;
+            font-weight: 900;
+            display: block;
+            color: var(--warning-green);
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            opacity: 0.7;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .stat-sub {
+            font-size: 12px;
+            opacity: 0.5;
+            margin-top: 4px;
+        }
+
+        /* ═══════════════════════════════════════════ SECTIONS */
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .section-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--teal-blue) 100%);
+            color: var(--white);
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--dark-blue);
+        }
+
+        .section-header h2 .highlight {
+            color: var(--primary-blue-dark);
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--grey-500);
+            margin-top: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ═══════════════════════════════════════════ KPI CARDS */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .kpi-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(10, 96, 126, 0.15);
+            border-color: var(--warning-green);
+        }
+
+        .kpi-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--grey-500);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .kpi-value {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 8px 0 4px;
+            letter-spacing: -2px;
+        }
+
+        .kpi-value.blue {
+            color: var(--primary-blue-dark);
+        }
+
+        .kpi-value.teal {
+            color: var(--teal-blue);
+        }
+
+        .kpi-value.green {
+            color: var(--warning-green-dark);
+        }
+
+        .kpi-sub {
+            font-size: 14px;
+            color: var(--grey-500);
+        }
+
+        .kpi-divider {
+            display: block;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to right, var(--warning-green), var(--teal-blue));
+            border-radius: 2px;
+            margin: 12px 0;
+        }
+
+        /* ═══════════════════════════════════════════ CAMPAIGN TABLE */
+        .table-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            margin-bottom: 32px;
+        }
+
+        .table-card-header {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            padding: 20px 28px;
+            color: var(--white);
+        }
+
+        .table-card-header h3 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .table-card-header p {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-top: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table th {
+            background: var(--grey-100);
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--grey-500);
+            text-align: left;
+            border-bottom: 2px solid var(--grey-200);
+        }
+
+        table th:not(:first-child) {
+            text-align: center;
+        }
+
+        table td {
+            padding: 16px 20px;
+            font-size: 15px;
+            border-bottom: 1px solid var(--grey-200);
+        }
+
+        table td:not(:first-child) {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        table tr.total-row {
+            background: var(--grey-100);
+        }
+
+        table tr.total-row td {
+            font-weight: 800;
+            color: var(--dark-blue);
+        }
+
+        /* ═══════════════════════════════════════════ AD CREATIVE CARDS (GRID) */
+        .ads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        @media (min-width: 1100px) {
+            .ads-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .ad-card.cut-first {
+                grid-column-start: 1;
+            }
+        }
+
+        .ad-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ad-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(10, 96, 126, 0.15);
+        }
+
+        .ad-card.winner {
+            border-color: var(--warning-green);
+        }
+
+        .ad-card.winner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--warning-green), var(--teal-blue));
+        }
+
+        .ad-card.promising {
+            border-color: var(--primary-blue-light);
+        }
+
+        .ad-card.promising::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--primary-blue-light);
+        }
+
+        .ad-card.cut {
+            border-color: var(--red);
+            opacity: 0.75;
+        }
+
+        .ad-card.cut::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--red);
+        }
+
+        .ad-verdict {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .verdict-winner {
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--warning-green-dark) 100%);
+            color: var(--white);
+        }
+
+        .verdict-promising {
+            background: rgba(43, 138, 175, 0.15);
+            color: var(--primary-blue-dark);
+        }
+
+        .verdict-cut {
+            background: var(--red-light);
+            color: var(--red);
+        }
+
+        .ad-card h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .ad-image-container {
+            width: 100%;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            border: 1px solid var(--grey-200);
+            background: var(--grey-100);
+        }
+
+        .ad-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .ad-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .ad-metric {
+            background: var(--grey-100);
+            border-radius: 10px;
+            padding: 12px 16px;
+        }
+
+        .ad-metric-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--grey-500);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+
+        .ad-metric-value {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--dark-blue);
+            margin-top: 2px;
+        }
+
+        .ad-metric-value.green {
+            color: var(--warning-green-dark);
+        }
+
+        .ad-metric-value.red {
+            color: var(--red);
+        }
+
+        /* ═══════════════════════════════════════════ FUNNEL */
+        .funnel-wrapper {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .funnel-step {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 0;
+            position: relative;
+        }
+
+        .funnel-bar-container {
+            flex: 1;
+        }
+
+        .funnel-bar-bg {
+            background: var(--grey-200);
+            border-radius: 12px;
+            height: 64px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .funnel-bar {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            min-width: 80px;
+            transition: width 1s ease;
+        }
+
+        .funnel-bar-text {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 15px;
+            white-space: nowrap;
+        }
+
+        .funnel-bar-text .count {
+            font-size: 22px;
+            font-weight: 900;
+        }
+
+        .funnel-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            margin-left: 140px;
+        }
+
+        .funnel-drop {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--grey-300);
+            border-radius: 50px;
+            padding: 6px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--primary-blue-dark);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .funnel-drop.alert {
+            border-color: var(--red);
+            color: var(--red);
+            background: var(--red-light);
+        }
+
+        .funnel-drop svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        .funnel-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue-dark), var(--teal-blue));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        /* ═══════════════════════════════════════════ INSIGHT CALLOUT */
+        .insight-callout {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            border-radius: 16px;
+            padding: 32px 36px;
+            color: var(--white);
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+
+
+        .insight-callout h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--warning-green);
+        }
+
+        .insight-callout p {
+            font-size: 15px;
+            line-height: 1.7;
+            opacity: 0.9;
+        }
+
+        /* ═══════════════════════════════════════════ RECOMMENDATIONS */
+        .rec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        @media (min-width: 1100px) {
+            .rec-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .rec-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(10, 96, 126, 0.08);
+            border: 1px solid rgba(10, 96, 126, 0.08);
+            transition: all 0.3s ease;
+            display: flex;
+            gap: 20px;
+        }
+
+        .rec-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(10, 96, 126, 0.15);
+            border-color: var(--warning-green);
+        }
+
+        .rec-number {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--warning-green) 0%, var(--teal-blue) 100%);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .rec-content h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 8px;
+        }
+
+        .rec-content p {
+            font-size: 14px;
+            color: #4B5563;
+            line-height: 1.6;
+        }
+
+        /* ═══════════════════════════════════════════ BOTTOM LINE */
+        .bottom-line {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 50%, var(--teal-blue) 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bottom-line::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -25%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(169, 207, 115, 0.1) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .bottom-line h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .bottom-line p {
+            font-size: 17px;
+            line-height: 1.8;
+            max-width: 720px;
+            margin: 0 auto 16px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .bottom-line .uplift {
+            display: inline-block;
+            margin-top: 24px;
+            background: rgba(169, 207, 115, 0.2);
+            border: 1px solid var(--warning-green);
+            color: var(--warning-green);
+            padding: 14px 36px;
+            border-radius: 50px;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            position: relative;
+        }
+
+        /* ═══════════════════════════════════════════ FOOTER */
+        footer {
+            background: linear-gradient(135deg, var(--primary-bg) 0%, var(--primary-blue-dark) 100%);
+            color: var(--white);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .footer-logo span {
+            font-size: 22px;
+            font-weight: 700;
+        }
+
+        footer p {
+            opacity: 0.5;
+            font-size: 13px;
+        }
+
+        /* ═══════════════════════════════════════════ ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* ═══════════════════════════════════════════ RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .stat {
+                padding: 20px 16px;
+            }
+
+            .stat-number {
+                font-size: 32px;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .kpi-value {
+                font-size: 36px;
+            }
+
+            .ads-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rec-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .funnel-connector {
+                margin-left: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════ HEADER ═══════════════════════════ -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <svg width="216" height="46" viewBox="0 0 216 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M39.6401 17.4242C39.2496 17.0338 39.0537 16.5561 39.0537 15.9898C39.0537 15.4234 39.2496 14.9472 39.6401 14.5568C40.0305 14.1649 40.5082 13.9704 41.0745 13.9704C41.6409 13.9704 42.0785 14.1663 42.4589 14.5568C42.8394 14.9472 43.0296 15.4263 43.0296 15.9898C43.0296 16.5533 42.8394 17.0324 42.4589 17.4242C42.0785 17.8147 41.6166 18.0106 41.0745 18.0106C40.5325 18.0106 40.0319 17.8147 39.6401 17.4242ZM42.5076 20.911V38.7681H39.5428V20.911H42.5076Z"
+                            fill="white" />
+                        <path
+                            d="M60.2817 22.5557C61.6289 23.87 62.3025 25.765 62.3025 28.242V38.7666H59.3692V28.6653C59.3692 26.8848 58.923 25.5204 58.0335 24.5765C57.1425 23.6311 55.9268 23.1592 54.3837 23.1592C52.8405 23.1592 51.5763 23.6483 50.6524 24.6251C49.7285 25.6034 49.268 27.0264 49.268 28.8942V38.768H46.3032V20.911H49.268V23.4524C49.8543 22.5399 50.6524 21.8349 51.6635 21.3343C52.6732 20.8352 53.7873 20.5849 55.0029 20.5849C57.1754 20.5849 58.9345 21.2428 60.2817 22.5571V22.5557Z"
+                            fill="white" />
+                        <path
+                            d="M79.726 22.5557C81.0732 23.87 81.7468 25.765 81.7468 28.242V38.7666H78.8136V28.6653C78.8136 26.8848 78.3674 25.5204 77.4778 24.5765C76.5868 23.6311 75.3712 23.1592 73.828 23.1592C72.2849 23.1592 71.0206 23.6483 70.0967 24.6251C69.1728 25.6034 68.7123 27.0264 68.7123 28.8942V38.768H65.7476V20.911H68.7123V23.4524C69.2987 22.5399 70.0967 21.8349 71.1078 21.3343C72.1175 20.8352 73.2316 20.5849 74.4473 20.5849C76.6197 20.5849 78.3788 21.2428 79.726 22.5571V22.5557Z"
+                            fill="white" />
+                        <path
+                            d="M89.5971 37.92C88.2399 37.1591 87.1745 36.0793 86.4036 34.6778C85.6327 33.2762 85.2466 31.653 85.2466 29.8066C85.2466 27.9603 85.6427 26.3685 86.4365 24.9669C87.2288 23.5654 88.31 22.4899 89.6787 21.7419C91.0473 20.9925 92.579 20.6178 94.2738 20.6178C95.9685 20.6178 97.5003 20.9925 98.8689 21.7419C100.238 22.4913 101.317 23.5611 102.111 24.9512C102.903 26.3413 103.301 27.9603 103.301 29.8066C103.301 31.653 102.893 33.2762 102.08 34.6778C101.264 36.0793 100.162 37.1591 98.7717 37.92C97.3816 38.6808 95.8384 39.0612 94.1451 39.0612C92.4518 39.0612 90.9572 38.6808 89.6 37.92H89.5971ZM97.1413 35.7046C98.0752 35.2055 98.8303 34.4561 99.4052 33.4564C99.9802 32.4582 100.269 31.2411 100.269 29.8066C100.269 28.3722 99.9859 27.1565 99.4224 26.1568C98.8575 25.1586 98.1195 24.4135 97.2071 23.9243C96.2946 23.4352 95.3064 23.1907 94.2423 23.1907C93.1783 23.1907 92.1614 23.4352 91.2604 23.9243C90.3594 24.4135 89.6358 25.1571 89.0937 26.1568C88.5503 27.1565 88.2785 28.3722 88.2785 29.8066C88.2785 31.2411 88.5446 32.4896 89.0766 33.4893C89.6086 34.489 90.3194 35.2327 91.2104 35.7218C92.1014 36.2109 93.0782 36.4555 94.1437 36.4555C95.2091 36.4555 96.2074 36.2066 97.1413 35.7061V35.7046Z"
+                            fill="white" />
+                        <path
+                            d="M109.85 38.359C108.763 37.8928 107.905 37.2406 107.276 36.404C106.645 35.5673 106.297 34.6063 106.233 33.5208H109.296C109.384 34.4118 109.801 35.1397 110.551 35.7032C111.3 36.2681 112.283 36.5499 113.5 36.5499C114.629 36.5499 115.52 36.301 116.171 35.8005C116.823 35.3013 117.149 34.6706 117.149 33.9098C117.149 33.1489 116.802 32.5468 116.107 32.1664C115.412 31.786 114.336 31.4113 112.88 31.0423C111.555 30.6948 110.473 30.3415 109.638 29.984C108.801 29.625 108.085 29.093 107.487 28.3865C106.889 27.6814 106.59 26.7518 106.59 25.6005C106.59 24.688 106.862 23.8528 107.406 23.092C107.949 22.3311 108.72 21.729 109.72 21.2828C110.718 20.838 111.859 20.6149 113.141 20.6149C115.117 20.6149 116.713 21.1155 117.93 22.1137C119.147 23.1134 119.798 24.4821 119.885 26.2197H116.921C116.855 25.2858 116.48 24.5364 115.796 23.9715C115.113 23.4066 114.195 23.1249 113.043 23.1249C111.979 23.1249 111.131 23.3537 110.502 23.8099C109.871 24.2661 109.557 24.864 109.557 25.6019C109.557 26.1883 109.747 26.6717 110.127 27.0521C110.508 27.4325 110.985 27.7357 111.562 27.9646C112.137 28.192 112.936 28.448 113.957 28.7297C115.239 29.0772 116.281 29.419 117.085 29.7566C117.889 30.0941 118.578 30.5989 119.154 31.2711C119.729 31.9447 120.028 32.8243 120.051 33.9112C120.051 34.8894 119.779 35.769 119.236 36.5513C118.693 37.3336 117.927 37.9471 116.939 38.3919C115.951 38.8367 114.815 39.0598 113.534 39.0598C112.165 39.0598 110.938 38.8252 109.851 38.359H109.85Z"
+                            fill="white" />
+                        <path
+                            d="M124.219 24.9669C124.957 23.5883 125.984 22.5185 127.298 21.7576C128.612 20.9982 130.117 20.6178 131.811 20.6178C134.005 20.6178 135.815 21.1498 137.238 22.2153C138.661 23.2793 139.6 24.7567 140.056 26.6474H136.863C136.558 25.5619 135.966 24.7038 135.087 24.0731C134.207 23.4438 133.116 23.1277 131.811 23.1277C130.117 23.1277 128.748 23.7098 127.705 24.8711C126.663 26.0338 126.141 27.6785 126.141 29.8081C126.141 31.9376 126.663 33.6209 127.705 34.7936C128.748 35.9664 130.117 36.5527 131.811 36.5527C133.114 36.5527 134.201 36.2495 135.069 35.6403C135.938 35.0324 136.535 34.1629 136.861 33.0331H140.055C139.577 34.858 138.621 36.3196 137.187 37.4151C135.753 38.512 133.961 39.0612 131.811 39.0612C130.117 39.0612 128.612 38.6808 127.298 37.92C125.984 37.1591 124.957 36.085 124.219 34.6935C123.479 33.3034 123.11 31.6744 123.11 29.8052C123.11 27.936 123.479 26.3456 124.219 24.9655V24.9669Z"
+                            fill="white" />
+                        <path
+                            d="M149.197 21.4315C150.164 20.8666 151.342 20.5849 152.732 20.5849V23.6483H151.95C148.626 23.6483 146.964 25.4518 146.964 29.0572V38.768H144V20.911H146.964V23.8113C147.486 22.7902 148.23 21.9979 149.197 21.433V21.4315Z"
+                            fill="white" />
+                        <path
+                            d="M156.435 17.4242C156.044 17.0338 155.848 16.5561 155.848 15.9898C155.848 15.4234 156.044 14.9472 156.435 14.5568C156.825 14.1649 157.303 13.9704 157.869 13.9704C158.435 13.9704 158.873 14.1663 159.253 14.5568C159.634 14.9472 159.824 15.4263 159.824 15.9898C159.824 16.5533 159.634 17.0324 159.253 17.4242C158.873 17.8147 158.411 18.0106 157.869 18.0106C157.327 18.0106 156.826 17.8147 156.435 17.4242ZM159.302 20.911V38.7681H156.337V20.911H159.302Z"
+                            fill="white" />
+                        <path
+                            d="M169.757 21.6432C170.918 20.9596 172.271 20.6163 173.814 20.6163C175.357 20.6163 176.839 20.9968 178.132 21.7562C179.425 22.517 180.44 23.5868 181.178 24.9655C181.916 26.3456 182.286 27.9474 182.286 29.7723C182.286 31.5972 181.917 33.1832 181.178 34.5948C180.44 36.0078 179.423 37.1033 178.132 37.8856C176.839 38.6679 175.4 39.0583 173.814 39.0583C172.228 39.0583 170.952 38.7165 169.789 38.0315C168.627 37.3479 167.742 36.4955 167.134 35.4729V45.936H164.169V20.9081H167.134V24.1989C167.72 23.1778 168.594 22.3254 169.757 21.6403V21.6432ZM178.441 26.2541C177.897 25.2544 177.163 24.4949 176.241 23.9729C175.317 23.4524 174.302 23.1906 173.195 23.1906C172.088 23.1906 171.104 23.4566 170.18 23.9887C169.256 24.5207 168.518 25.2916 167.965 26.3027C167.411 27.3124 167.134 28.4808 167.134 29.8052C167.134 31.1295 167.411 32.3308 167.965 33.3405C168.518 34.3502 169.257 35.1225 170.18 35.6545C171.102 36.1866 172.108 36.4526 173.195 36.4526C174.282 36.4526 175.319 36.1866 176.241 35.6545C177.163 35.1225 177.897 34.3517 178.441 33.3405C178.984 32.3308 179.256 31.1409 179.256 29.7723C179.256 28.4036 178.984 27.2523 178.441 26.2526V26.2541Z"
+                            fill="white" />
+                        <path
+                            d="M189.813 23.3537V33.8783C189.813 34.7479 189.998 35.3614 190.367 35.7189C190.736 36.0779 191.377 36.2567 192.289 36.2567H194.473V38.7652H191.801C190.151 38.7652 188.912 38.3848 188.087 37.6239C187.262 36.8631 186.849 35.6145 186.849 33.8769V23.3523H184.535V20.9081H186.849V16.4117H189.813V20.9081H194.473V23.3523H189.813V23.3537Z"
+                            fill="white" />
+                        <path
+                            d="M198.057 24.9669C198.795 23.5883 199.81 22.5185 201.103 21.7576C202.396 20.9982 203.834 20.6178 205.421 20.6178C207.007 20.6178 208.342 20.9553 209.494 21.6275C210.645 22.3011 211.503 23.1478 212.068 24.1689V20.911H215.066V38.7681H212.068V35.4443C211.482 36.4869 210.606 37.3508 209.445 38.0344C208.282 38.718 206.931 39.0612 205.388 39.0612C203.844 39.0612 202.369 38.6708 201.086 37.8885C199.804 37.1062 198.793 36.0093 198.055 34.5977C197.316 33.1861 196.947 31.5786 196.947 29.7752C196.947 27.9717 197.316 26.3485 198.055 24.9684L198.057 24.9669ZM211.254 26.287C210.711 25.2887 209.978 24.5221 209.055 23.9901C208.131 23.4581 207.115 23.1921 206.008 23.1921C204.901 23.1921 203.89 23.4524 202.978 23.9744C202.065 24.495 201.337 25.2558 200.794 26.2555C200.25 27.2552 199.979 28.4279 199.979 29.7752C199.979 31.1224 200.25 32.3337 200.794 33.3434C201.337 34.3531 202.065 35.1254 202.978 35.6574C203.89 36.1895 204.9 36.4555 206.008 36.4555C207.117 36.4555 208.132 36.1895 209.055 35.6574C209.977 35.1254 210.711 34.3546 211.254 33.3434C211.798 32.3337 212.069 31.1553 212.069 29.8081C212.069 28.4608 211.798 27.2881 211.254 26.2884V26.287Z"
+                            fill="white" />
+                        <path
+                            d="M20.44 33.2977C16.0136 30.7206 10.9794 29.1531 5.61341 28.7126C5.57193 28.7097 5.54333 28.7526 5.56049 28.7898L6.50154 30.7206C6.62453 30.9708 6.85479 31.1696 7.13081 31.2082C11.6373 31.8346 15.9306 33.3907 19.6634 35.646C19.6891 35.6618 19.7234 35.6518 19.7377 35.6246L20.613 33.8912C20.7203 33.6781 20.6445 33.4164 20.4385 33.2977H20.44Z"
+                            fill="url(#paint0_linear_882_15116)" />
+                        <path
+                            d="M20.4786 33.322C20.1854 33.1433 19.9995 33.046 19.9995 33.046C19.9995 33.046 20.297 33.2691 20.3156 33.4336C20.3399 33.641 20.0639 33.7168 20.0639 33.7168L18.8668 34.0214C16.1581 34.6478 13.3077 34.9882 10.4317 34.9882C9.96544 34.9882 9.48634 34.9796 9.01724 34.9624C8.84133 34.9553 8.77125 35.1226 8.84991 35.2799L9.69943 37.0448C9.8024 37.2507 9.98833 37.378 10.2186 37.3794C10.2901 37.3794 10.3602 37.3794 10.4317 37.3794C13.4007 37.3794 16.2982 37.0491 19.0813 36.4241C19.2658 36.3826 19.4217 36.2596 19.5061 36.0908L20.3999 34.3203L20.5158 34.09L20.6517 33.8197C20.6517 33.8197 20.7961 33.5165 20.4772 33.322H20.4786Z"
+                            fill="white" />
+                        <path
+                            d="M15.6617 43.7365L11.2868 34.9796C10.3171 34.9982 9.51767 34.9682 9.05858 34.9438C8.8698 34.9338 8.74109 35.1312 8.82547 35.3014L14.0399 45.6901C14.1729 45.9547 14.549 45.9547 14.682 45.6901L15.6617 43.738V43.7365Z"
+                            fill="white" />
+                        <path
+                            d="M16.8518 40.4557C15.1513 40.7117 13.3993 40.8705 11.6445 40.9205L14.1216 45.8532C14.2203 46.0491 14.5006 46.0491 14.5993 45.8532L17.1221 40.8261C17.2165 40.6388 17.0606 40.4243 16.8518 40.4557Z"
+                            fill="white" />
+                        <path
+                            d="M3.50963 24.7181L5.49756 28.6797L7.05072 28.8242C7.38109 28.8485 7.77582 28.8756 8.24062 28.9028C8.96286 28.9529 9.68509 28.9786 10.4202 28.9786C14.1644 28.9786 17.8185 28.2922 21.1465 27.0765C21.3381 27.0064 21.494 26.8648 21.5855 26.6832L24.3915 21.0741C25.1595 19.5395 25.743 17.9163 26.0905 16.2358C26.2264 15.578 26.3222 14.9258 26.3222 14.3981C26.3222 5.6669 16.9232 -1.04917 7.8459 4.34542C6.41716 5.19494 5.29019 6.45205 4.37488 7.80785C1.81202 11.6035 1.9436 16.2287 3.59258 19.6168L3.56684 19.5681L3.66266 19.7612C3.68268 19.7998 3.70127 19.8398 3.7213 19.8785L6.36281 25.12C5.04134 24.9456 4.40635 24.8612 3.93725 24.7925C3.65837 24.751 3.41667 24.5737 3.29511 24.3191L3.03338 23.7742L1.49166 20.7022L1.47736 20.6736C0.554905 18.7772 0 16.6492 0 14.3981C0 4.04366 11.1753 -3.9095 21.6928 2.04142C23.6292 3.13693 25.5142 4.95466 26.6884 7.05558C29.224 11.5935 29.1811 16.2687 27.5579 20.0529L27.5279 20.1202L24.842 25.4447L23.2588 28.5982C23.1716 28.7727 23.0243 28.91 22.8441 28.9815C19.0026 30.5232 14.8065 31.3713 10.4202 31.3713C9.3204 31.3713 8.23347 31.3184 7.15942 31.214C6.88625 31.1868 6.64599 31.018 6.52442 30.7721L5.49756 28.6826L3.50963 24.7181Z"
+                            fill="white" />
+                        <defs>
+                            <linearGradient id="paint0_linear_882_15116" x1="20.9369" y1="34.928" x2="6.908"
+                                y2="29.3304" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="white" />
+                                <stop offset="0.99" stop-color="#0A607E" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="header-badge">March 1–19, 2026</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ════════════════════════<!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate">Facebook & Instagram <span class="highlight">Ad Results</span></h1>
+            <p class="animate delay-1">Executive summary for March 1–19, 2026. Here’s what our ad budget delivered over 19 days targeting US decision-makers.</p>
+            <div class="hero-stats">
+                <div class="stat animate delay-1">
+                    <span class="stat-number">$7,948</span>
+                    <span class="stat-label">Total Spent</span>
+                    <span class="stat-sub">Over 19 days</span>
+                </div>
+                <div class="stat animate delay-2">
+                    <span class="stat-number">34</span>
+                    <span class="stat-label">Leads</span>
+                    <span class="stat-sub">People who attempted to book</span>
+                </div>
+                <div class="stat animate delay-3">
+                    <span class="stat-number">29</span>
+                    <span class="stat-label">Appointments</span>
+                    <span class="stat-sub">11 qualified, 18 rejected</span>
+                </div>
+                <div class="stat animate delay-4">
+                    <span class="stat-number">72.6K</span>
+                    <span class="stat-label">People Reached</span>
+                    <span class="stat-sub">US professionals</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════<!-- COST KPIs -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">The Big Picture</span>
+                <h2>What Each Result <span class="highlight">Costs You</span></h2>
+            </div>
+            <div class="kpi-grid">
+                <div class="kpi-card animate">
+                    <span class="kpi-label">Cost per Lead</span>
+                    <span class="kpi-divider"></span>
+                    <div class="kpi-value blue">$233.78</div>
+                    <span class="kpi-sub">Average cost to acquire one lead</span>
+                </div>
+                <div class="kpi-card animate delay-1">
+                    <span class="kpi-label">Cost per Qualified Appointment</span>
+                    <span class="kpi-divider"></span>
+                    <div class="kpi-value teal">$722.58</div>
+                    <span class="kpi-sub">Cost for each qualified meeting booked</span>
+                </div>
+                <div class="kpi-card animate delay-2">
+                    <span class="kpi-label">Cost per Total Appointment</span>
+                    <span class="kpi-divider"></span>
+                    <div class="kpi-value green">$274.08</div>
+                    <span class="kpi-sub">Including all 29 bookings (before qualification)</span>
+                </div>
+                <div class="kpi-card animate delay-3">
+                    <span class="kpi-label">Qualification Rate</span>
+                    <span class="kpi-divider"></span>
+                    <div class="kpi-value blue">38%</div>
+                    <span class="kpi-sub">11 of 29 appointments passed the qualification form</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════<!-- CAMPAIGNS -->
+    <section class="section" style="background: var(--grey-100);">
+        <div class="container">
+            <div class="table-card">
+                <div class="table-card-header">
+                    <h3>Campaign Performance</h3>
+                    <p>Breakdown by campaign — leads and qualified appointments</p>
+                </div>
+                <table>
+                    <thead><tr><th>Campaign</th><th>Spent</th><th>Leads</th><th>Qual. Appts</th><th>Cost / Appt.</th></tr></thead>
+                    <tbody>
+                        <tr><td>BB. Lead Campaign | US | 2026</td><td>$3,181</td><td>20</td><td>3</td><td>$1,060</td></tr>
+                        <tr><td>Primary Lead Gen | CBO | US</td><td>$4,767</td><td>14</td><td>8</td><td>$596</td></tr>
+                        <tr class="total-row"><td>Total</td><td>$7,948</td><td>34</td><td>11</td><td>$723</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════<!-- AD CREATIVES -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Creatives</span>
+                <h2>Which Ads Are <span class="highlight">Performing</span></h2>
+                <p>Ranked by spend. Here’s where we’re getting results — and where we’re not.</p>
+            </div>
+            <div class="ads-grid">
+                <div class="ad-card winner animate">
+                    <span class="ad-verdict verdict-winner">⭐ Best</span>
+                    <h4>750K Claims Processed</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric"><span class="ad-metric-label">Spent</span><div class="ad-metric-value">$632</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Leads</span><div class="ad-metric-value green">10</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Cost/Lead</span><div class="ad-metric-value green">$63.25</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Share</span><div class="ad-metric-value">29%</div></div>
+                    </div>
+                </div>
+                <div class="ad-card winner animate delay-1">
+                    <span class="ad-verdict verdict-winner">⭐ Best</span>
+                    <h4>Stop Leaving Money on the Table</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric"><span class="ad-metric-label">Spent</span><div class="ad-metric-value">$4,110</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Leads</span><div class="ad-metric-value green">14</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Cost/Lead</span><div class="ad-metric-value">$293.54</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Share</span><div class="ad-metric-value">52%</div></div>
+                    </div>
+                </div>
+                <div class="ad-card promising animate delay-2">
+                    <span class="ad-verdict verdict-promising">&#128269; Promising</span>
+                    <h4>Missing R&amp;D Credits</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric"><span class="ad-metric-label">Spent</span><div class="ad-metric-value">$4.86</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Leads</span><div class="ad-metric-value green">1</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Cost/Lead</span><div class="ad-metric-value green">$4.86</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Status</span><div class="ad-metric-value" style="font-size:13px;color:var(--primary-blue-light);">Needs more budget</div></div>
+                    </div>
+                </div>
+                <div class="ad-card animate delay-1">
+                    <span class="ad-verdict" style="background: var(--grey-200); color: var(--grey-500);">Average</span>
+                    <h4>Reddit-Style Video</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric"><span class="ad-metric-label">Spent</span><div class="ad-metric-value">$1,104</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Leads</span><div class="ad-metric-value">4</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Cost/Lead</span><div class="ad-metric-value">$275.96</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Share</span><div class="ad-metric-value">14%</div></div>
+                    </div>
+                </div>
+                <div class="ad-card animate delay-2">
+                    <span class="ad-verdict" style="background: var(--grey-200); color: var(--grey-500);">Average</span>
+                    <h4>$7.6 Million in Claims</h4>
+                    <div class="ad-metrics">
+                        <div class="ad-metric"><span class="ad-metric-label">Spent</span><div class="ad-metric-value">$828</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Leads</span><div class="ad-metric-value">5</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Cost/Lead</span><div class="ad-metric-value">$165.58</div></div>
+                        <div class="ad-metric"><span class="ad-metric-label">Share</span><div class="ad-metric-value">10%</div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="insight-callout" style="margin-top: 40px;">
+                <h4>Key Observations</h4>
+                <p>The “750K Claims” ad turned around completely — from $209/lead last period to just $63/lead now. The “Stop Leaving Money” ad still drives the most volume (52% of spend) but efficiency has declined, signaling creative fatigue. The “$7.6M in Claims” ad — last period’s top winner — has also declined due to audience saturation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════<!-- PERIOD COMPARISON -->
+    <section class="section" style="background: var(--grey-100);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Comparison</span>
+                <h2>Period <span class="highlight">vs. Period</span></h2>
+                <p>How March 1–19 compares to the previous report (Jan 29 – Feb 25).</p>
+            </div>
+            <div class="table-card">
+                <div class="table-card-header">
+                    <h3>Side-by-Side Comparison</h3>
+                    <p>Note: In Jan–Feb, no qualification filter was applied. Starting March, appointments are filtered.</p>
+                </div>
+                <table>
+                    <thead><tr><th>Metric</th><th>Jan 29 – Feb 25</th><th>Mar 1 – Mar 19</th><th>Change</th></tr></thead>
+                    <tbody>
+                        <tr><td>Total Spend</td><td>$2,690</td><td>$7,948</td><td style="color:var(--dark-blue);font-weight:700">+195%</td></tr>
+                        <tr><td>Spend / Day</td><td>$96</td><td>$418</td><td style="color:var(--dark-blue);font-weight:700">+335%</td></tr>
+                        <tr><td>People Reached</td><td>46,027</td><td>72,633</td><td style="color:var(--warning-green-dark);font-weight:700">+58%</td></tr>
+                        <tr><td>Leads</td><td>81</td><td>34</td><td style="color:var(--red);font-weight:700">–58%</td></tr>
+                        <tr><td>Cost per Lead</td><td>$33.22</td><td>$233.78</td><td style="color:var(--red);font-weight:700">+603%</td></tr>
+                        <tr><td>Total Appointments</td><td>9 <em style="opacity:0.6">(no filter)</em></td><td>29</td><td style="color:var(--warning-green-dark);font-weight:700">+222%</td></tr>
+                        <tr><td>Cost per Total Appt.</td><td>$299.05</td><td>$274.08</td><td style="color:var(--warning-green-dark);font-weight:700">–8%</td></tr>
+                        <tr><td>Qualified Appointments</td><td>N/A</td><td>11</td><td>—</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="insight-callout">
+                <h4>The Real Story</h4>
+                <p>Total appointments grew from 9 to 29 — more than 3× — and the cost per appointment actually improved from $299 to $274. The qualification filter means we now have a higher-quality pipeline. Focus going forward: fresh creatives to improve lead efficiency and audience refinement to push the qualification rate above 38%.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S NEXT -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Next Steps</span>
+                <h2>What’s <span class="highlight">Next</span></h2>
+            </div>
+            <div class="rec-grid">
+                <div class="rec-card animate"><span class="rec-number">1</span><div class="rec-content"><h4>Keep Building on Our Landing Page Wins</h4><p>We cut the click-to-landing-page drop-off from 75% to 41% — nearly halving it. Continuing to optimize load speed and message match will close the remaining gap.</p></div></div>
+                <div class="rec-card animate delay-1"><span class="rec-number">2</span><div class="rec-content"><h4>Stronger Follow-Up &amp; Faster Response</h4><p>We’ll build an email sequence that gets prospects excited to take action, not just reminded.</p></div></div>
+                <div class="rec-card animate delay-2"><span class="rec-number">3</span><div class="rec-content"><h4>Instant Lead Alerts</h4><p>Alerts so Rezo and Christy are notified instantly when a new lead comes in — follow-up within 30–60 minutes while interest is highest.</p></div></div>
+                <div class="rec-card animate delay-3"><span class="rec-number">4</span><div class="rec-content"><h4>Launch LinkedIn Ads (High-Intent Leads)</h4><p>LinkedIn ads targeting more serious prospects. With proper tracking now in place, costs should be more efficient while delivering higher-quality leads.</p></div></div>
+                <div class="rec-card animate delay-4"><span class="rec-number">5</span><div class="rec-content"><h4>Signal-Based Outreach Campaigns</h4><p>Outreach based on buying signals — new CFO hires, engineering expansions, funding rounds. Right companies, right time.</p></div></div>
+                <div class="rec-card animate delay-4"><span class="rec-number">6</span><div class="rec-content"><h4>Refine Targeting to Reduce Waste</h4><p>Tighten audience targeting to exclude companies under 20 employees. This should significantly reduce the 62% rejection rate.</p></div></div>
+                <div class="rec-card animate delay-4"><span class="rec-number">7</span><div class="rec-content"><h4>Refresh Ad Creatives</h4><p>Fresh creatives to replace fatigued top-spending ads, improving lead efficiency and reducing costs.</p></div></div>
+            </div>
+            <div class="insight-callout" style="margin-top: 40px;">
+                <h4>P.S.</h4>
+                <p>Most of these implementations will happen in the next 10–20 days.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ════════════════════════<!-- BOTTOM LINE -->
+    <section class="bottom-line">
+        <div class="container">
+            <h2 class="animate">Bottom Line</h2>
+            <p class="animate delay-1">We scaled the budget nearly 3× and total appointments grew from 9 to 29 — more than tripling. With the new qualification filter, 11 high-quality meetings were booked. The two biggest opportunities: tighten targeting to reduce the 62% rejection rate, and refresh creatives to combat fatigue.</p>
+            <p class="animate delay-2">Combined with our landing page improvements and new initiatives, we expect:</p>
+            <div class="animate delay-3">
+                <span class="uplift">Significantly More Qualified Appointments</span>
+            </div>
+            <p class="animate delay-4" style="margin-top: 16px; opacity: 0.6; font-size: 14px;">Without increasing overall ad spend</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <svg width="32" height="38" viewBox="0 0 28 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.51 24.72L5.50 28.68L7.05 28.82C7.38 28.85 7.78 28.88 8.24 28.90C8.96 28.95 9.69 28.98 10.42 28.98C14.16 28.98 17.82 28.29 21.15 27.08C21.34 27.01 21.49 26.86 21.59 26.68L24.39 21.07C25.16 19.54 25.74 17.92 26.09 16.24C26.23 15.58 26.32 14.93 26.32 14.40C26.32 5.67 16.92 -1.05 7.85 4.35C6.42 5.19 5.29 6.45 4.37 7.81C1.81 11.60 1.94 16.23 3.59 19.62L6.36 25.12C5.04 24.95 4.41 24.86 3.94 24.79C3.66 24.75 3.42 24.57 3.30 24.32L1.49 20.70C0.55 18.78 0 16.65 0 14.40C0 4.04 11.18 -3.91 21.69 2.04C23.63 3.14 25.51 4.95 26.69 7.06C29.22 11.59 29.18 16.27 27.56 20.05L24.84 25.44L23.26 28.60C23.17 28.77 23.02 28.91 22.84 28.98C19.00 30.52 14.81 31.37 10.42 31.37C9.32 31.37 8.23 31.32 7.16 31.21C6.89 31.19 6.65 31.02 6.52 30.77L3.51 24.72Z"
+                        fill="white" />
+                </svg>
+                <span>innoscripta</span>
+            </div>
+            <p>Report prepared March 20, 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate').forEach(el => {
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
