@@ -12,7 +12,7 @@ Over the past 4 weeks, we ran paid ads on Facebook and Instagram to generate lea
 |---|---|
 | **Total Ad Spend** | €2,690 over 28 days |
 | **People Reached** | 46,027 unique US professionals |
-| **Leads Captured** | 81 people who submitted their info |
+| **Leads Captured** | 81 People who attempted to book |
 | **Appointments Booked** | 9 meetings scheduled from ads |
 | **Cost per Lead** | €33.22 |
 | **Cost per Appointment** | €299.05 |
