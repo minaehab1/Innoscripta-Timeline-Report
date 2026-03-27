@@ -45,10 +45,7 @@ We tested many different ad creatives with different messages. Here are the top 
 | Ad Creative | Spent | Leads | Cost/Lead | Verdict |
 |---|---|---|---|---|
 | Stop Leaving Money (FOMO) | $4,109.51 | 14 | $293.54 | Best |
-| Reddit-Style Video | $1,103.82 | 4 | $275.96 | ⚠️ Avarage |
-| $7.6 Million in Claims | $827.88 | 5 | $165.58 | ⚠️ Avarage |
 | 750K Claims Processed | $632.47 | 10 | $63.25 | ⭐ Best |
-| Missing R&D Credits | $4.86 | 1 | $4.86 | 🔍 Promising |
 
 **Key observation:** The "Stop Leaving Money" ad absorbed 52% of total spend ($4,110 of $7,948) and generated 14 of 34 leads (41%). While it drove the most volume, its cost per lead of $293.54 is significantly higher than last period's $26.60. This signals possible creative fatigue — the ad is scaling but efficiency is declining.
 
